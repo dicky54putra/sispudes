@@ -29,6 +29,16 @@ class Produk extends CI_Controller
 	{
 		$this->load->view('produk/index');
 	}
+
+	public function get_my_produk($user_id = 0)
+	{
+		if(!empty($user_id))
+		{
+			$data = $this->db->query('SELECT * FROM produk WHERE user_id = ? AND status = 2 AND id NOT IN(SELECT produk_id FROM produk_lelang WHERE user_id = ?)',[$user_id,$user_id])->result_array();
+			output_json(['status'=>TRUE,'msg'=>'success','data'=>$data]);
+		}
+	}
+
 	public function lelang()
 	{
 		$this->load->view('index');

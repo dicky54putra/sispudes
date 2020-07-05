@@ -7,12 +7,14 @@ $add->setTable('produk_lelang');
 $add->addInput('produk_id','dropdown');
 $add->setLabel('produk_id','Produk');
 $add->removeNone('produk_id');
-$add->tableOptions('produk_id','produk','id','nama','user_id = '.$user['id'].' AND status = 2 AND id NOT IN(SELECT produk_id FROM produk_lelang WHERE user_id = '.$user['id'].')');
+$add->setOptions('produk_id',['None']);
+// $add->tableOptions('produk_id','produk','id','nama','user_id = '.$user['id'].' AND status = 2 AND id NOT IN(SELECT produk_id FROM produk_lelang WHERE user_id = '.$user['id'].')');
 
 $add->addInput('user_id','static');
 $add->setValue('user_id',$user['id']);
 $add->setFormName('lelang_edit_form');
 $add->setUnique(['produk_id']);
+$add->setRequired('All');
 
 $form = new zea();
 
@@ -33,12 +35,14 @@ if(is_member())
 
 	$form->addInput('user_id','dropdown');
 	$form->tableOptions('user_id','user','id','username');
+	$form->setAttribute('user_id','disabled');
+	$form->setLabel('user_id','username');
 }
 $form->setDelete(true);
 $form->setAttribute('produk_id','disabled');
 $form->setFormName('lelang_list_form');
 
-
+$this->esg->add_js([base_url('assets/js/lelang.js')]);
 ?>
 <a href="<?php echo base_url('admin/produk/lelang') ?>" class="btn btn-sm btn-warning" style="margin-bottom: 10px;"><i class="fa fa-refresh"></i> Refresh</a>
 <div class="row">
@@ -49,3 +53,6 @@ $form->setFormName('lelang_list_form');
 		<?php $form->form();?>
 	</div>
 </div>
+<script>
+	var _USERID = <?php echo $user['id'];?>
+</script>
