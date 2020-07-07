@@ -1,4 +1,5 @@
 <?php
+$user_id = $_SESSION[base_url().'_logged_in']['id'];
 $add = new zea();
 
 $add->init('edit');
@@ -11,7 +12,7 @@ $add->setOptions('produk_id',['None']);
 // $add->tableOptions('produk_id','produk','id','nama','user_id = '.$user['id'].' AND status = 2 AND id NOT IN(SELECT produk_id FROM produk_lelang WHERE user_id = '.$user['id'].')');
 
 $add->addInput('user_id','static');
-$add->setValue('user_id',$user['id']);
+$add->setValue('user_id',$user_id);
 $add->setFormName('lelang_edit_form');
 $add->setUnique(['produk_id']);
 $add->setRequired('All');
@@ -29,7 +30,7 @@ $form->addInput('produk_id','dropdown');
 $form->setLabel('produk_id','Produk');
 if(is_member())
 {
-	$form->tableOptions('produk_id','produk','id','nama','user_id = '.$user['id'].' AND status = 2');
+	$form->tableOptions('produk_id','produk','id','nama','user_id = '.$user_id.' AND status = 2');
 }else{
 	$form->tableOptions('produk_id','produk','id','nama',' status = 2');
 
@@ -41,6 +42,7 @@ if(is_member())
 $form->setDelete(true);
 $form->setAttribute('produk_id','disabled');
 $form->setFormName('lelang_list_form');
+$form->setUrl('admin/produk/clear_lelang');
 
 $this->esg->add_js([base_url('assets/js/lelang.js')]);
 ?>

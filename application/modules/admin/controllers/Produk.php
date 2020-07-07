@@ -43,4 +43,8 @@ class Produk extends CI_Controller
 	{
 		$this->load->view('index');
 	}
+	public function clear_lelang()
+	{
+		$this->load->view('produk/lelang');
+	}
 }

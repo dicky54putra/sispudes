@@ -16,7 +16,7 @@ $form->setPlaintext('id',[
 $where = '';
 if(is_member())
 {
-	$where = ' user_id = '.$user['id'];
+	$where = ' user_id = '.$_SESSION[base_url().'_logged_in']['id'];
 	$form->setEdit(true);
 }else{
 	$form->addInput('user_id','dropdown');
