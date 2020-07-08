@@ -12,22 +12,22 @@ class Produk extends CI_Controller
 		$this->load->library('ZEA/zea');
 		$this->esg_model->init();
 	}
-	public function edit()
+	public function edit($status = '')
 	{
-		$this->load->view('index');
+		$this->load->view('index',['status'=>$status]);
 	}
 	public function index()
 	{
 		$this->load->view('index');
 	}
-	public function list()
+	public function list($status = '')
 	{
-		$this->load->view('index');
+		$this->load->view('index',['status'=>$status]);
 	}
 
-	public function clear_list()
+	public function clear_list($status = '')
 	{
-		$this->load->view('produk/index');
+		$this->load->view('produk/list',['status'=>$status]);
 	}
 
 	public function get_my_produk($user_id = 0)

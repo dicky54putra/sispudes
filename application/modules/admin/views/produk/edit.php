@@ -1,7 +1,21 @@
 <?php
-
-if(!empty($user))
+if(!empty($user) && !empty($status))
 {
+	switch(strtolower($status))
+	{
+		case 'kebutuhan':
+			$status_id = 2;
+			$status = 'Kebutuhan';
+		break;
+		case 'produk':
+			$status_id = 1;
+			$status = 'Produk';
+		break;
+		default:
+			$status_id = 1;
+			$status = 'Produk';
+			break;
+	}
 	$id = !empty($_GET['id']) ? intval($_GET['id']) : 0;
 	$form = new zea();
 	$form->init('edit');
@@ -13,8 +27,9 @@ if(!empty($user))
 		$where = ' AND user_id = '.$user['id'];
 		$form->setWhere($where);
 	}
+	$form->setHeading($status);
 	$form->addInput('nama','text');
-	$form->setLabel('nama','Nama*');
+	$form->setLabel('nama','Nama '.$status.'*');
 	$form->addInput('deskripsi','textarea');
 	$form->addInput('lebar','text');
 	$form->setType('lebar','number');
@@ -40,19 +55,21 @@ if(!empty($user))
 	$form->setAccept('gallery','.jpg,.jpeg,.png');
 
 	$form->addInput('kontak','text');
+	$form->setLabel('kontak','Kontak yg bisa dihubungi');
 
-	$form->addInput('status','dropdown');
-	$form->setOptions('status',['1'=>'Beli','2'=>'Jual']);
+	$form->addInput('status','static');
+	$form->setValue('status',$status_id);
 
 	$form->addInput('user_id','static');
 	$form->setValue('user_id',$user['id']);
 
 	$form->setRequired(['nama']);
-
 	if(empty($form->getData()) && !empty($id))
 	{
 		msg('Maaf Sepertinya URL yang sedang anda akses tidak valid, silahkan periksa kembali','danger');
 	}else{
 		$form->form();
 	}
+}else{
+	msg('Halaman yg anda tuju tidak tersedia','danger');
 }

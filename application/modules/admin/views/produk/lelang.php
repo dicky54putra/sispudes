@@ -4,6 +4,7 @@ $add = new zea();
 
 $add->init('edit');
 $add->setTable('produk_lelang');
+$add->setHeading('Produk Lelang');
 
 $add->addInput('produk_id','dropdown');
 $add->setLabel('produk_id','Produk');
@@ -21,6 +22,7 @@ $form = new zea();
 
 $form->init('roll');
 $form->setTable('produk_lelang');
+$form->setHeading('Produk yg Anda Lelang');
 
 $form->setNumbering(true);
 
@@ -30,6 +32,7 @@ $form->addInput('produk_id','dropdown');
 $form->setLabel('produk_id','Produk');
 if(is_member())
 {
+	$form->setWhere(' user_id = '.$user_id);
 	$form->tableOptions('produk_id','produk','id','nama','user_id = '.$user_id.' AND status = 2');
 }else{
 	$form->tableOptions('produk_id','produk','id','nama',' status = 2');
