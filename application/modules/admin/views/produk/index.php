@@ -7,7 +7,6 @@ $form->setTable('produk');
 
 $form->search();
 
-
 $form->addInput('id','plaintext');
 $form->setLabel('id','Action');
 $form->setPlaintext('id',[
