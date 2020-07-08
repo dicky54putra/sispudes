@@ -31,7 +31,7 @@ if(!empty($user))
 	$form->setCollapse('lebar',FALSE);
 
 	$form->addInput('lokasi','textarea');
-	$form->setAttribute('lokasi',['placeholder'=>'Provinsi, Kabupaten, Kecamatan, Desa']);
+	$form->setAttribute('lokasi',['placeholder'=>'lokasi']);
 
 	$form->addInput('foto','file');
 	$form->setAccept('foto','.jpg, jpeg, .png');

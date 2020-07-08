@@ -7,21 +7,21 @@
     </ol>
     <div class="carousel-inner">
       <div class="item active">
-        <img src="http://placehold.it/900x500/39CCCC/ffffff&text=I+Love+Bootstrap" alt="First slide" style="width: 100%;">
+        <img src="http://placehold.it/900x500/39CCCC/ffffff&text=Sispudes" alt="First slide" style="width: 100%;">
 
         <div class="carousel-caption">
           First Slide
         </div>
       </div>
       <div class="item">
-        <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide" style="width: 100%;">
+        <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=Sispudes" alt="Second slide" style="width: 100%;">
 
         <div class="carousel-caption">
           Second Slide
         </div>
       </div>
       <div class="item">
-        <img src="http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide" style="width: 100%;">
+        <img src="http://placehold.it/900x500/f39c12/ffffff&text=Sispudes" alt="Third slide" style="width: 100%;">
 
         <div class="carousel-caption">
           Third Slide
